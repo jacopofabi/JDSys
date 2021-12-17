@@ -1,0 +1,17 @@
+[Unit]
+Description=Simple systemd service for JDSys application registry setup
+
+[Service]
+Type=simple
+EnvironmentFile=/home/ec2-user/go/src/JDSys/env
+WorkingDirectory=/home/ec2-user/go/src
+ExecStart=/bin/bash /home/ec2-user/go/src/JDSys/registry/run.sh
+
+[Install]
+WantedBy=multi-user.target
+
+#1) copiare il servizio registry.service in /etc/systemd/system
+#2) abilitare il servizio per consentire l'avvio allo startup del sistema: 
+    #sudo systemctl daemon-reload
+    #sudo systemctl start registry.service
+    #sudo systemctl enable registry.service

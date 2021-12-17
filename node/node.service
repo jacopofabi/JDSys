@@ -1,0 +1,17 @@
+[Unit]
+Description=Simple systemd service for JDSys application node setup
+
+[Service]
+Type=simple
+EnvironmentFile=/home/ec2-user/go/src/JDSys/env
+WorkingDirectory=/home/ec2-user/go/src
+ExecStart=/bin/bash /home/ec2-user/go/src/JDSys/node/run.sh
+
+[Install]
+WantedBy=multi-user.target
+
+#1) copiare il servizio node.service in /etc/systemd/system
+#2) abilitare il servizio per consentire l'avvio allo startup del sistema: 
+    #sudo systemctl daemon-reload
+    #sudo systemctl start node.service
+    #sudo systemctl enable node.service
